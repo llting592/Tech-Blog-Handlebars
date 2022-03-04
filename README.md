@@ -55,5 +55,8 @@ WHEN I am idle on the site for more than a set time
 THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ```
 
-Demo
+## Demo
 [Deployed link](https://damp-sea-84548.herokuapp.com/)
+
+## Screenshot
+![Screenshot](https://github.com/llting592/Tech-Blog-Handlebars/blob/main/demo.png)
