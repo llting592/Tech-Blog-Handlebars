@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 
 
 //Get all posts for homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: 

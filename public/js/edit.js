@@ -19,12 +19,12 @@ const editFormHandler = async function(event) {
 
   document.location.replace('/dashboard');
 };
-
+//delete- delete button is working but doesn't upload the page
+//need to manually reload to show changes/deletion- need to fix to auto reload
 const deleteClickHandler = async function() {
   await fetch(`/api/post/${postId}`, {
     method: 'DELETE'
   });
-
   document.location.replace('/dashboard');
 };
 
