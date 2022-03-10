@@ -3,7 +3,7 @@ const { Post, Comment, User } = require('../models/');
 
 
 //Get all posts for homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 //Get single post
-router.get('/post/:id', withAuth, async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
