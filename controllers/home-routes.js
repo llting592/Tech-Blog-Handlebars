@@ -1,23 +1,26 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../models/');
 
+
 //Get all posts for homepage
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [User],
+      where: {
+        userId: req.session.userId,
+      },
     });
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
     res.render('all-posts', { posts });
   } catch (err) {
-    res.status(500).json(err);
+    res.redirect('login');
   }
 });
 
 //Get single post
-router.get('/post/:id', async (req, res) => {
+router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -37,7 +40,7 @@ router.get('/post/:id', async (req, res) => {
       res.status(404).end();
     }
   } catch (err) {
-    res.status(500).json(err);
+    res.redirect('login');
   }
 });
 

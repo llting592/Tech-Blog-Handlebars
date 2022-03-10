@@ -10,7 +10,7 @@ router.post('/', withAuth, async (req, res) => {
     });
     res.json(newComment);
   } catch (err) {
-    res.status(500).json(err);
+    res.redirect('login');
   }
 });
 
