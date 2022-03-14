@@ -25,7 +25,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        //set minimum password length
+        //set minimum password length to be 6 characters
         len: [6]
       }
     }

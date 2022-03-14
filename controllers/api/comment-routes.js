@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Comment } = require('../../models/');
 const withAuth = require('../../utils/auth');
+//Add a comment 
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -10,6 +11,7 @@ router.post('/', withAuth, async (req, res) => {
     });
     res.json(newComment);
   } catch (err) {
+    
     res.redirect('login');
   }
 });

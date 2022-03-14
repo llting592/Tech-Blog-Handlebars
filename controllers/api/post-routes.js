@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post } = require('../../models/');
 const withAuth = require('../../utils/auth');
-
+//New Post
 router.post('/', withAuth, async (req, res) => {
   const body = req.body;
 
@@ -12,7 +12,7 @@ router.post('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Updaet Post
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const [affectedRows] = await Post.update(req.body, {
@@ -30,7 +30,7 @@ router.put('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//Delete Post
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const [affectedRows] = Post.destroy({

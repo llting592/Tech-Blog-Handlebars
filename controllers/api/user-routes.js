@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+//create new user and save their info
 router.post('/', async (req, res) => {
   try {
     const newUser = await User.create({
@@ -29,14 +30,14 @@ router.post('/login', async (req, res) => {
     });
 
     if (!user) {
-      res.status(400).json({ message: 'No user account found' });
+      res.status(400).json({ message: 'No user account found, please check user name' });
       return;
     }
 
     const validPassword = user.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'No user account found' });
+      res.status(400).json({ message: 'Incorrect password, please check password' });
       return;
     }
 
@@ -48,7 +49,7 @@ router.post('/login', async (req, res) => {
       res.json({ user, message: 'You are now logged in' });
     });
   } catch (err) {
-    res.status(400).json({ message: 'No user account found' });
+    res.status(400).json({ message: 'No user account found, please check your login info and try again' });
   }
 });
 //logout route

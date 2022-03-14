@@ -16,7 +16,7 @@ const signupFormHandler = async function(event) {
   if (response.ok) {
     document.location.replace('/dashboard');
   } else {
-    alert('Failed to sign up (minimum password length is 6 characters)');
+    alert('Failed to sign up (minimum password length is 6 characters or the username may be taken)');
   }
 };
 

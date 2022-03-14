@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { Post } = require('../models/');
 const withAuth = require('../utils/auth');
-
-router.get('/', withAuth, async (req, res) => {
+//show posts on dashboard 
+router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       where: {
@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
     res.redirect('login');
   }
 });
-
+//new post from dashboard menu when logged in 
 router.get('/new', withAuth, (req, res) => {
   res.render('new-post', {
     layout: 'dashboard',
